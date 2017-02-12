@@ -21,8 +21,8 @@
     'disableOptions': []
   }, options);
 
-  self.onFocus = (function() {
-    var original = self.onFocus;
+  self.refreshOptions = (function() {
+    var original = self.refreshOptions;
 
     return function() {
       original.apply(this, arguments);
