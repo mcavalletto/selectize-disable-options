@@ -52,4 +52,35 @@
       return original.apply(this, arguments);
     };
   })();
+
+  self.disabledOptions = function() {
+    return options.disableOptions;
+  }
+
+  self.setDisabledOptions = function( values ) {
+    options.disableOptions = values
+  }
+
+  self.disableOptions = function( values ) {
+    if ( ! ( values instanceof Array ) ) {
+      values = [ values ]
+    }
+    values.forEach( function( val ) {
+      if ( options.disableOptions.indexOf( val ) == -1 ) {
+        options.disableOptions.push( val )
+      }
+    } );
+  }
+
+  self.enableOptions = function( values ) {
+    if ( ! ( values instanceof Array ) ) {
+      values = [ values ]
+    }
+    values.forEach( function( val ) {
+      var remove = options.disableOptions.indexOf( val );
+      if ( remove + 1 ) {
+        options.disableOptions.splice( remove, 1 );
+      }
+    } );
+  }
 });
